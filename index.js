@@ -22,7 +22,7 @@ async function fetchBatch(current, acc = []) {
 
     const results = await myContract.getPastEvents('Staked', options)
     acc = [...acc, ...results]
-    console.log('Fetched first batck of items', results.length, 'new items');
+    console.log('Fetched first batch of items', results.length, 'new items');
 
     if (lastCurrentBlock >= lastBlock) {
         return acc
@@ -34,11 +34,11 @@ async function fetchBatch(current, acc = []) {
 async function execute() {
     
     const items = await fetchBatch(firstBlock, [])
-
+    // console.log(items)
     const filteredItems = []
     items.forEach(item => {
-        if (!filteredItems.includes(item.address)) {
-            filteredItems.push(item.address)
+        if (!filteredItems.includes(item.returnValues.user)) {
+            filteredItems.push(item.returnValues.user)
         }
     })
 
