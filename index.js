@@ -11,7 +11,7 @@ const web3 = new Web3(new Web3.providers.HttpProvider(process.env.RPC_PROVIDER))
 const myContract = new web3.eth.Contract(abi, contractAddress);
 
 const firstBlock = 323654
-const lastBlock = 410264
+const lastBlock = 450000
 
 async function fetchBatch(current, acc = []) {
     const lastCurrentBlock = current + 2000 > lastBlock ? lastBlock : current + 2000;
